@@ -4,6 +4,11 @@
 
 This is a Python version of [The Super Tiny Compiler](https://github.com/thejameskyle/the-super-tiny-compiler) originally developed in JavaScript by [@thejameskyle](https://github.com/thejameskyle)
 
+Although I must admit I did tweaks to it:
+* Right and left Parenthesis on the tokenizer are treated as 2 separated token types, to simplify a condition on the parser.
+* Didn't liked how the visitor map of functions in the `transformer` function looked like with lambda's, so I wroted it as functions so It'll look more tidy.
+* Usage of Python placeholders on the `codeGeneration` function
+
 ---
 
 Distributed under the same license as author, because I know nothing about licenses.

@@ -162,17 +162,12 @@ def codeGenerator(node):
     if node['type'] == 'Program':
         return '\n'.join([code for code in map(codeGenerator, node['body'])])
     elif node['type'] == 'ExpressionStatement':
-        return (
-            codeGenerator(node['expression']) 
-            +';'
-            )
+        expression = codeGenerator(node['expression']) 
+        return '%s;' % expression
     elif node['type'] == 'CallExpression':
-        return (
-            codeGenerator(node['callee']) 
-            +'('
-            + ', '.join([code for code in map(codeGenerator, node['arguments'])])
-            +')'
-            )
+        callee = codeGenerator(node['callee']) 
+        params = ', '.join([code for code in map(codeGenerator, node['arguments'])])
+        return "%s(%s)" % (callee, params)
     elif node['type'] == 'Identifier':
         return node['name']
     elif node['type'] == 'NumberLiteral':
